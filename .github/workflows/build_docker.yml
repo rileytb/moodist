@@ -22,7 +22,7 @@ jobs:
 
       - name: 'Build Inventory Image'
         run: |
-          IMAGE_NAME="ghcr.io/remvze/moodist"
+          IMAGE_NAME="ghcr.io/rileytb/moodist"
 
           GIT_TAG=${{ github.ref }}
           GIT_TAG=${GIT_TAG#refs/tags/}
