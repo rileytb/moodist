@@ -76,7 +76,6 @@ export function Menu() {
                 >
                   <ShareItem open={() => setShowShareLink(true)} />
                   <ShuffleItem />
-                  <DonateItem />
                 </motion.div>
               </div>
             </FloatingFocusManager>
