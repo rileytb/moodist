@@ -14,7 +14,7 @@ import {
   FloatingFocusManager,
 } from '@floating-ui/react';
 
-import { ShuffleItem, ShareItem, DonateItem } from './items';
+import { ShuffleItem, ShareItem } from './items';
 import { ShareLinkModal } from '@/components/modals/share-link';
 
 import { slideY, fade, mix } from '@/lib/motion';
@@ -58,7 +58,6 @@ export function Menu() {
         >
           {isOpen ? <IoClose /> : <IoMenu />}
         </button>
-
         <AnimatePresence>
           {isOpen && (
             <FloatingFocusManager context={context} modal={false}>
