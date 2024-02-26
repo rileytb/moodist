@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.4](https://github.com/rileytb/moodist/compare/v1.3.3...v1.3.4) (2024-02-26)
+
+
+### ✨ Features
+
+* remove about section ([a20d409](https://github.com/rileytb/moodist/commit/a20d4091265674ffb1802c3fb5eefab13a120e41))
+
 ### [1.3.3](https://github.com/rileytb/moodist/compare/v1.3.2...v1.3.3) (2024-02-26)
 
 
