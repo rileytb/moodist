@@ -9,23 +9,19 @@ import { Container } from '@/components/container';
 import { StoreConsumer } from '@/components/store-consumer';
 import { Buttons } from '@/components/buttons';
 import { Categories } from '@/components/categories';
+import { ScrollToTop } from '@/components/scroll-to-top';
 import { SharedModal } from '@/components/modals/shared';
-import { Toolbar } from '@/components/toolbar';
+import { Menu } from '@/components/menu/menu';
 import { SnackbarProvider } from '@/contexts/snackbar';
 
 import { sounds } from '@/data/sounds';
-import { FADE_OUT } from '@/constants/events';
 
 import type { Sound } from '@/data/types';
-import { subscribe } from '@/lib/event';
 
 export function App() {
   const categories = useMemo(() => sounds.categories, []);
 
   const favorites = useSoundStore(useShallow(state => state.getFavorites()));
-  const pause = useSoundStore(state => state.pause);
-  const lock = useSoundStore(state => state.lock);
-  const unlock = useSoundStore(state => state.unlock);
 
   const favoriteSounds = useMemo(() => {
     const favoriteSounds = categories
@@ -57,19 +53,6 @@ export function App() {
     return () => document.removeEventListener('visibilitychange', onChange);
   }, []);
 
-  useEffect(() => {
-    const unsubscribe = subscribe(FADE_OUT, (e: { duration: number }) => {
-      lock();
-
-      setTimeout(() => {
-        pause();
-        unlock();
-      }, e.duration);
-    });
-
-    return unsubscribe;
-  }, [pause, lock, unlock]);
-
   const allCategories = useMemo(() => {
     const favorites = [];
 
@@ -94,7 +77,8 @@ export function App() {
           <Categories categories={allCategories} />
         </Container>
 
-        <Toolbar />
+        <ScrollToTop />
+        <Menu />
         <SharedModal />
       </StoreConsumer>
     </SnackbarProvider>

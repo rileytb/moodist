@@ -1,4 +1,8 @@
 .button {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 99;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,13 +16,7 @@
   border-radius: 50%;
   transition: 0.2s;
 
-  &:focus-visible {
-    outline: 2px solid var(--color-neutral-400);
-    outline-offset: 2px;
-  }
-
-  &:hover,
-  &:focus-visible {
+  &:hover {
     background-color: var(--color-neutral-200);
   }
 }

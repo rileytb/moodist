@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback, useRef, useEffect } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import { Sound } from '@/components/sound';
@@ -18,20 +18,6 @@ interface SoundsProps {
 
 export function Sounds({ functional, id, sounds }: SoundsProps) {
   const [showAll, setShowAll] = useLocalStorage(`${id}-show-more`, false);
-  const [clickedMore, setClickedMore] = useState(false);
-
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  const firstNewSound = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (showAll && clickedMore) {
-      firstNewSound.current?.focus();
-      setClickedMore(false);
-    }
-  }, [showAll, clickedMore]);
-
-  const showMoreButton = useRef<HTMLButtonElement>(null);
 
   const [hiddenSelections, setHiddenSelections] = useState<{
     [key: string]: boolean;
@@ -57,13 +43,6 @@ export function Sounds({ functional, id, sounds }: SoundsProps) {
     }));
   }, []);
 
-  const toggleMore = () => {
-    if (!isAnimating) {
-      setShowAll(prev => !prev);
-      setClickedMore(true);
-    }
-  };
-
   const variants = mix(fade(), scale(0.9));
 
   return (
@@ -75,7 +54,6 @@ export function Sounds({ functional, id, sounds }: SoundsProps) {
             {...sound}
             functional={functional}
             hidden={!showAll && index > 5}
-            ref={index === 6 ? firstNewSound : undefined}
             selectHidden={selectHidden}
             unselectHidden={unselectHidden}
           />
@@ -88,28 +66,23 @@ export function Sounds({ functional, id, sounds }: SoundsProps) {
       </div>
 
       {sounds.length > 6 && (
-        <button
-          ref={showMoreButton}
-          className={cn(
-            styles.button,
-            hasHiddenSelection && !showAll && styles.active,
-          )}
-          onClick={toggleMore}
-        >
-          <AnimatePresence initial={false} mode="wait">
-            <motion.span
-              animate="show"
-              exit="hidden"
-              initial="hidden"
-              key={showAll ? `${id}-show-less` : `${id}-show-more`}
-              variants={variants}
-              onAnimationComplete={() => setIsAnimating(false)}
-              onAnimationStart={() => setIsAnimating(true)}
-            >
-              {showAll ? 'Show Less' : 'Show More'}
-            </motion.span>
-          </AnimatePresence>
-        </button>
+        <AnimatePresence initial={false} mode="wait">
+          <motion.button
+            animate="show"
+            exit="hidden"
+            initial="hidden"
+            key={showAll ? `${id}-show-less` : `${id}-show-more`}
+            transition={{ duration: 0.2 }}
+            variants={variants}
+            className={cn(
+              styles.button,
+              hasHiddenSelection && !showAll && styles.active,
+            )}
+            onClick={() => setShowAll(prev => !prev)}
+          >
+            {showAll ? 'Show Less' : 'Show More'}
+          </motion.button>
+        </AnimatePresence>
       )}
     </div>
   );

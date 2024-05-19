@@ -6,24 +6,11 @@ interface ContainerProps {
   children: React.ReactNode;
   className?: string;
   tight?: boolean;
-  wide?: boolean;
 }
 
-export function Container({
-  children,
-  className,
-  tight,
-  wide,
-}: ContainerProps) {
+export function Container({ children, className, tight }: ContainerProps) {
   return (
-    <div
-      className={cn(
-        styles.container,
-        className,
-        tight && styles.tight,
-        wide && styles.wide,
-      )}
-    >
+    <div className={cn(styles.container, className, tight && styles.tight)}>
       {children}
     </div>
   );

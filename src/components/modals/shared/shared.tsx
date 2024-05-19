@@ -4,7 +4,6 @@ import { Modal } from '@/components/modal';
 
 import { useSoundStore } from '@/store';
 import { useSnackbar } from '@/contexts/snackbar';
-import { useCloseListener } from '@/hooks/use-close-listener';
 import { cn } from '@/helpers/styles';
 import { sounds } from '@/data/sounds';
 
@@ -77,8 +76,6 @@ export function SharedModal() {
     setIsOpen(false);
     showSnackbar('Done! You can now play the new selection.');
   };
-
-  useCloseListener(() => setIsOpen(false));
 
   return (
     <Modal show={isOpen} onClose={() => setIsOpen(false)}>

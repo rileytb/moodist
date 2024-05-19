@@ -6,8 +6,4 @@
   &.tight {
     max-width: 450px;
   }
-
-  &.wide {
-    max-width: 760px;
-  }
 }

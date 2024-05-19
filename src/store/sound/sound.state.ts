@@ -14,7 +14,6 @@ export interface SoundState {
     };
   } | null;
   isPlaying: boolean;
-  locked: boolean;
   noSelected: () => boolean;
   sounds: {
     [id: string]: {
@@ -41,7 +40,6 @@ export const createState: StateCreator<
     },
     history: null,
     isPlaying: false,
-    locked: false,
     noSelected() {
       const { sounds } = get();
       const keys = Object.keys(sounds);

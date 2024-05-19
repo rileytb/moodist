@@ -51,13 +51,7 @@
     outline: none;
     transition: 0.2s;
 
-    &:focus-visible {
-      outline: 2px solid var(--color-neutral-400);
-      outline-offset: 2px;
-    }
-
-    &:hover,
-    &:focus-visible {
+    &:hover {
       color: var(--color-foreground);
       background-color: var(--color-neutral-300);
     }
@@ -66,8 +60,7 @@
       color: var(--color-neutral-200);
       background-color: var(--color-neutral-950);
 
-      &:hover,
-      &:focus-visible {
+      &:hover {
         background-color: var(--color-neutral-800);
       }
     }

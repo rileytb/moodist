@@ -18,11 +18,6 @@
   border-radius: 50px;
   transition: 0.2s;
 
-  &:focus-visible {
-    outline: 2px solid var(--color-neutral-400);
-    outline-offset: 2px;
-  }
-
   &::after {
     position: absolute;
     top: 1px;
@@ -63,8 +58,7 @@
     animation-iteration-count: infinite;
   }
 
-  &:hover::after,
-  &:focus-visible::after {
+  &:hover::after {
     background-color: var(--color-neutral-100);
   }
 }

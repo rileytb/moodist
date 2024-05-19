@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { Balancer } from 'react-wrap-balancer';
 import { BsSoundwave } from 'react-icons/bs/index';
 
 import { Container } from '@/components/container';
@@ -12,7 +13,7 @@ export function Hero() {
   return (
     <div className={styles.hero}>
       <Container className={styles.container}>
-        {/* <div className={styles.pattern} /> */}
+        <div className={styles.pattern} />
 
         <img
           alt="Faded Moodist Logo"
@@ -24,11 +25,13 @@ export function Hero() {
 
         <div className={styles.title}>
           <div className={styles.left}></div>
-          <h2>Moodist</h2>
+          <h1>Moodist</h1>
           <div className={styles.right}></div>
         </div>
 
-        <h1 className={styles.desc}>Ambient sounds for focus and calm.</h1>
+        <h2 className={styles.desc}>
+          <Balancer>Ambient sounds for focus and calm.</Balancer>
+        </h2>
 
         <p className={styles.sounds}>
           <span className={styles.icon}>

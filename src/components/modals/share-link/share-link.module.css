@@ -23,7 +23,6 @@
 
   & input {
     flex-grow: 1;
-    min-width: 0;
     height: 100%;
     padding: 0 10px;
     font-size: var(--font-sm);
@@ -31,11 +30,6 @@
     background: transparent;
     border: none;
     outline: none;
-
-    &:focus-visible {
-      outline: 2px solid var(--color-neutral-400);
-      outline-offset: 2px;
-    }
   }
 
   & button {
@@ -52,13 +46,7 @@
     outline: none;
     transition: 0.2s;
 
-    &:focus-visible {
-      outline: 2px solid var(--color-neutral-400);
-      outline-offset: 2px;
-    }
-
-    &:hover,
-    &:focus-visible {
+    &:hover {
       background-color: var(--color-neutral-200);
     }
   }
